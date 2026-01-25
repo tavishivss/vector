@@ -1,0 +1,156 @@
+/* ===================================
+   Custom Node Styling
+   =================================== */
+.custom-node {
+  position: relative;
+  cursor: default;
+}
+
+.custom-node:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl) !important;
+  z-index: 1000;
+}
+
+.custom-node.selected {
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3), var(--shadow-xl) !important;
+}
+
+/* Input field focus states */
+.custom-node input:focus,
+.custom-node select:focus,
+.custom-node textarea:focus {
+  border-color: var(--accent-primary);
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow-purple);
+}
+
+/* Checkbox styling */
+.custom-node input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--accent-primary);
+}
+
+/* Select dropdown styling */
+.custom-node select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 32px;
+}
+
+/* Textarea styling */
+.custom-node textarea {
+  resize: vertical;
+  font-family: var(--font-mono);
+  line-height: 1.5;
+}
+
+/* Handle hover effect enhancement */
+.react-flow__node.custom-node .react-flow__handle {
+  transition: all var(--transition-fast);
+}
+
+.react-flow__node.custom-node:hover .react-flow__handle {
+  width: 14px;
+  height: 14px;
+  opacity: 1;
+}
+
+/* Node type specific border colors on hover */
+.react-flow__node:hover[data-type*="Input"] {
+  border-color: #10b981 !important;
+}
+
+.react-flow__node:hover[data-type*="Output"] {
+  border-color: #f59e0b !important;
+}
+
+.react-flow__node:hover[data-type*="llm"] {
+  border-color: #8b5cf6 !important;
+}
+
+.react-flow__node:hover[data-type*="text"] {
+  border-color: #06b6d4 !important;
+}
+
+.react-flow__node:hover[data-type*="filter"] {
+  border-color: #3b82f6 !important;
+}
+
+.react-flow__node:hover[data-type*="transform"] {
+  border-color: #eab308 !important;
+}
+
+.react-flow__node:hover[data-type*="conditional"] {
+  border-color: #ef4444 !important;
+}
+
+.react-flow__node:hover[data-type*="aggregator"] {
+  border-color: #22c55e !important;
+}
+
+.react-flow__node:hover[data-type*="delay"] {
+  border-color: #a855f7 !important;
+}
+
+/* Label animation */
+.custom-node label {
+  position: relative;
+}
+
+.custom-node label::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-primary);
+  transition: width var(--transition-base);
+}
+
+.custom-node label:focus-within::after {
+  width: 100%;
+}
+
+/* Placeholder text styling */
+.custom-node input::placeholder,
+.custom-node textarea::placeholder {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* Select dropdown colors */
+.custom-node select {
+  color: var(--text-primary);
+}
+
+.custom-node select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Disabled state */
+.custom-node input:disabled,
+.custom-node select:disabled,
+.custom-node textarea:disabled {
+  background-color: var(--bg-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Delete button hover state */
+.node-delete-button:hover {
+  transform: scale(1.15);
+  background: #dc2626 !important;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5) !important;
+}
+
+.node-delete-button:active {
+  transform: scale(0.95);
+}

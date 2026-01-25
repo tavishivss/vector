@@ -1,0 +1,372 @@
+/* ===================================
+   Design System Variables
+   =================================== */
+
+/* Base Color Palette */
+:root {
+  /* Purple Scale */
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+  
+  /* Status Colors */
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --yellow-500: #eab308;
+  --yellow-600: #ca8a04;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+  
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* ===================================
+   Dark Theme (Default)
+   =================================== */
+:root,
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --bg-elevated: #1f1f1f;
+  
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #707070;
+  --text-disabled: #4a4a4a;
+  
+  /* Accent Colors */
+  --accent-primary: #a855f7;
+  --accent-secondary: #7e22ce;
+  --accent-hover: #c084fc;
+  
+  /* Borders */
+  --border-color: #2a2a2a;
+  --border-hover: #3a3a3a;
+  --border-focus: var(--accent-primary);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  --gradient-secondary: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  --shadow-up: 0 -4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-purple: 0 4px 20px rgba(168, 85, 247, 0.4);
+  
+  /* Success/Warning/Error */
+  --success: var(--green-500);
+  --warning: var(--yellow-500);
+  --error: var(--red-500);
+}
+
+/* ===================================
+   Light Theme
+   =================================== */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e5e5e5;
+  --bg-elevated: #fafafa;
+  
+  /* Text */
+  --text-primary: #0a0a0a;
+  --text-secondary: #4a4a4a;
+  --text-tertiary: #707070;
+  --text-disabled: #a0a0a0;
+  
+  /* Accent Colors */
+  --accent-primary: #9333ea;
+  --accent-secondary: #7e22ce;
+  --accent-hover: #a855f7;
+  
+  /* Borders */
+  --border-color: #e0e0e0;
+  --border-hover: #d0d0d0;
+  --border-focus: var(--accent-primary);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
+  --gradient-secondary: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-up: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-purple: 0 4px 20px rgba(147, 51, 234, 0.3);
+  
+  /* Success/Warning/Error */
+  --success: var(--green-600);
+  --warning: var(--yellow-600);
+  --error: var(--red-600);
+}
+
+/* ===================================
+   Base Styles
+   =================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+code {
+  font-family: var(--font-mono);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+
+/* ===================================
+   Scrollbar Styling  
+   =================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+
+/* ===================================
+   Utility Classes
+   =================================== */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+/* ===================================
+   Animation Keyframes
+   =================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ===================================
+   React Flow Customization
+   =================================== */
+.react-flow__node {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.react-flow__edge {
+  stroke-width: 2;
+}
+
+.react-flow__edge.selected {
+  stroke: var(--accent-primary);
+  stroke-width: 3;
+}
+
+.react-flow__handle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-secondary);
+  background: var(--accent-primary);
+  transition: all var(--transition-fast);
+}
+
+.react-flow__handle:hover {
+  width: 16px;
+  height: 16px;
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-purple);
+}
+
+.react-flow__handle-connecting {
+  background: var(--green-500);
+}
+
+.react-flow__handle-valid {
+  background: var(--green-500);
+}
+
+.react-flow__controls {
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+}
+
+.react-flow__controls-button {
+  border: none;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  color: var(--text-primary);
+}
+
+.react-flow__controls-button:hover {
+  background: var(--bg-tertiary);
+  color: var(--accent-primary);
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor;
+}
+
+.react-flow__minimap {
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.react-flow__minimap-mask {
+  fill: var(--bg-tertiary);
+}
+
+.react-flow__background {
+  background-color: var(--bg-primary);
+}
+
+.react-flow__background line {
+  stroke: var(--border-color);
+}
+
+/* ===================================
+   Selection Styles
+   =================================== */
+::selection {
+  background-color: var(--accent-primary);
+  color: white;
+}
