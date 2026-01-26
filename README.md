@@ -8,7 +8,7 @@ A production-ready, full-stack pipeline builder with advanced features, beautifu
 
 ## Quick Start
 
-### 1. Start Backend
+### 1. Start Backend:
 
 ```bash
 cd backend
