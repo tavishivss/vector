@@ -11,9 +11,9 @@ function App() {
             <div className="app-logo">⚡</div>
             <div>
               <h1 className="app-title">VectorShift Builder</h1>
-              <p className="app-subtitle">Create powerful data pipelines with drag-and-drop simplicity</p>
             </div>
           </div>
+        
         </div>
       </header>
 

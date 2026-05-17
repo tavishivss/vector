@@ -16,7 +16,7 @@ import { DelayNode } from './nodes/delayNode';
 import 'reactflow/dist/style.css';
 import './ui.css';
 
-const gridSize = 20;
+const gridSize = 24;
 const proOptions = { hideAttribution: true };
 const nodeTypes = {
   customInput: InputNode,
@@ -133,6 +133,7 @@ export const PipelineUI = () => {
             nodeTypes={nodeTypes}
             proOptions={proOptions}
             snapGrid={[gridSize, gridSize]}
+            snapToGrid
             connectionLineType="smoothstep"
             deleteKeyCode={['Delete', 'Backspace']}
           >
@@ -145,7 +146,7 @@ export const PipelineUI = () => {
             <MiniMap
               nodeColor={() => '#ffffff'}
               maskColor="rgba(255, 255, 255, 0.04)"
-              style={{ borderRadius: 12 }}
+              style={{ width: 210, height: 138, borderRadius: 10 }}
             />
           </ReactFlow>
 

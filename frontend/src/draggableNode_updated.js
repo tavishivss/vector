@@ -1,4 +1,4 @@
-export const DraggableNode = ({ type, icon = '📦', description = '' }) => {
+export const DraggableNode = ({ type, icon }) => {
   const onDragStart = (event, nodeType) => {
     const appData = { nodeType };
     event.currentTarget.style.cursor = 'grabbing';
@@ -13,7 +13,6 @@ export const DraggableNode = ({ type, icon = '📦', description = '' }) => {
       onDragEnd={(event) => (event.currentTarget.style.cursor = 'grab')}
       draggable
       title={type}
-      data-description={description}
     >
       <div className="draggable-node-icon">
         {icon}

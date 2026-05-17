@@ -13,7 +13,7 @@ import './nodes.css';
  * @param {Array}  config.fields    — field descriptors (text/number/select/textarea/checkbox)
  * @param {Function} config.renderContent — optional custom renderer
  * @param {Object} config.defaultValues
- * @param {number} config.width     — override default 240px width
+ * @param {number} config.width     — override default 244px width
  */
 export const createNode = (config) => {
   const {
@@ -24,7 +24,7 @@ export const createNode = (config) => {
     fields = [],
     renderContent,
     defaultValues = {},
-    width = 240,
+    width = 244,
   } = config;
 
   return ({ id, data, selected }) => {
@@ -199,14 +199,14 @@ export const createNode = (config) => {
  * HandleConfig — shorthand helpers for common handle placements.
  */
 export const HandleConfig = {
-  sourceRight: (id, top = '50%') => ({
+  sourceRight: (id, top = '18px') => ({
     type: 'source',
     position: Position.Right,
     id,
     style: { top },
   }),
 
-  targetLeft: (id, top = '50%') => ({
+  targetLeft: (id, top = '18px') => ({
     type: 'target',
     position: Position.Left,
     id,

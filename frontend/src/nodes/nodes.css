@@ -4,27 +4,25 @@
 .custom-node {
   position: relative;
   cursor: default;
-  background: var(--glass-bg-strong);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-lg);
+  background: #2b2b2b;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  padding: 18px;
   color: var(--text-primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
   transition: all var(--transition-base);
-  min-width: 230px;
+  min-width: 244px;
 }
 
 .custom-node:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg) !important;
-  border-color: var(--glass-border-hover);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42) !important;
+  border-color: #5a5a5a;
   z-index: 100;
 }
 
 .custom-node.selected {
-  box-shadow: 0 0 0 1.5px var(--text-tertiary), var(--shadow-lg) !important;
+  border-color: #5a5a5a;
+  box-shadow: 0 0 0 1px #5a5a5a, 0 14px 32px rgba(0, 0, 0, 0.42) !important;
 }
 
 /* ===================================
@@ -33,28 +31,22 @@
 .node-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-md);
-  padding-bottom: var(--spacing-sm);
-  border-bottom: 1px solid var(--glass-border);
+  gap: 0;
+  margin-bottom: 22px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #444444;
 }
 
 .node-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8125rem;
-  flex-shrink: 0;
+  display: none;
 }
 
 .node-title {
   font-weight: 600;
-  font-size: 0.8125rem;
+  font-size: 1rem;
+  line-height: 1;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 /* ===================================
@@ -62,31 +54,33 @@
    =================================== */
 .node-field-label {
   display: block;
-  margin-bottom: var(--spacing-sm);
-  font-size: 0.6875rem;
+  margin-bottom: 18px;
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text-secondary);
-  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  letter-spacing: 0;
 }
 
 .node-field-input {
   width: 100%;
-  padding: 6px var(--spacing-sm);
+  min-height: 38px;
+  padding: 0 11px;
   font-size: 0.75rem;
   font-family: var(--font-sans);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--spacing-sm);
+  border: 1px solid #484848;
+  border-radius: 6px;
+  margin-top: 6px;
+  margin-bottom: 0;
   transition: all var(--transition-fast);
-  background: var(--bg-surface);
+  background: #1b1b1b;
   color: var(--text-primary);
   outline: none;
 }
 
 .node-field-input:focus {
-  border-color: var(--text-tertiary);
-  box-shadow: 0 0 0 2px var(--accent-glow);
-  background: var(--glass-bg);
+  border-color: #666666;
+  box-shadow: none;
+  background: #1d1d1d;
 }
 
 .node-field-input::placeholder {
@@ -99,8 +93,8 @@
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23555555' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 8px center;
-  padding-right: 28px;
+  background-position: right 11px center;
+  padding-right: 30px;
 }
 
 .custom-node select option {
@@ -112,12 +106,14 @@
   resize: vertical;
   font-family: var(--font-mono);
   line-height: 1.5;
-  min-height: 52px;
+  min-height: 78px;
+  padding-top: 11px;
+  padding-bottom: 11px;
 }
 
 .custom-node input[type="checkbox"] {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
   accent-color: var(--text-primary);
 }
@@ -126,25 +122,20 @@
    Handles
    =================================== */
 .custom-node .react-flow__handle {
-  width: 9px;
-  height: 9px;
+  width: 12px;
+  height: 12px;
   background: var(--text-primary);
-  border: 2px solid var(--bg-primary);
+  border: 2px solid #5c5c5c;
   transition: all var(--transition-fast);
 }
 
 .custom-node:hover .react-flow__handle {
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
 }
 
 .handle-label {
-  position: absolute;
-  font-size: 0.5625rem;
-  color: var(--text-tertiary);
-  font-weight: 500;
-  pointer-events: none;
-  white-space: nowrap;
+  display: none;
 }
 
 .handle-label-left {
@@ -164,10 +155,10 @@
    =================================== */
 .node-delete-button {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 20px;
-  height: 20px;
+  top: -7px;
+  right: -7px;
+  width: 18px;
+  height: 18px;
   background: var(--text-primary);
   color: var(--bg-primary);
   border: 2px solid var(--bg-primary);
@@ -176,7 +167,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);

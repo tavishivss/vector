@@ -23,8 +23,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--spacing-xl);
-  height: 44px;
+  padding: 0 20px;
+  height: 67px;
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--glass-border);
   flex-shrink: 0;
@@ -33,46 +33,61 @@
 
 .canvas-header-left {
   flex: 1;
+  min-width: 0;
 }
 
 .canvas-header-center {
   display: flex;
   justify-content: center;
+  flex: 1;
 }
 
 .canvas-header-right {
   flex: 1;
   display: flex;
   justify-content: flex-end;
+  min-width: 0;
 }
 
 .canvas-title {
-  font-size: 0.8125rem;
+  font-size: 1rem;
+  line-height: 1;
   font-weight: 600;
   color: var(--text-primary);
 }
 
 .canvas-stats {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: 20px;
 }
 
 .canvas-stat {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 10px 0 14px;
+  font-size: 0.8125rem;
+  font-weight: 500;
   color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
 }
 
 .canvas-stat-value {
-  font-weight: 600;
-  color: var(--text-primary);
+  min-width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--bg-primary);
   font-variant-numeric: tabular-nums;
-  background: var(--bg-tertiary);
-  padding: 1px 8px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--glass-border);
+  background: var(--text-primary);
+  padding: 0 7px;
+  border-radius: 5px;
+  border: 0;
 }
 
 /* ===================================
@@ -96,6 +111,17 @@
   pointer-events: none;
   z-index: 0;
   animation: fadeIn 0.5s ease-out;
+}
+
+/* ===================================
+   Connection Lines
+   =================================== */
+.react-flow__connection {
+  stroke: #3a3a3a !important;
+}
+
+.react-flow__connection-path {
+  stroke: #3a3a3a !important;
 }
 
 .empty-state-glow {
@@ -130,7 +156,11 @@
 @media (max-width: 768px) {
   .pipeline-canvas-header {
     padding: 0 var(--spacing-lg);
-    height: 40px;
+    height: 64px;
+  }
+
+  .canvas-title {
+    font-size: 1rem;
   }
 
   .canvas-stats {

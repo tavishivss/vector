@@ -5,67 +5,111 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--spacing-lg);
-  gap: var(--spacing-lg);
+  padding: 0;
+  overflow: visible;
+  background: var(--bg-secondary);
 }
 
 .toolbar-header {
-  text-align: center;
-  padding-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  height: 78px;
+  padding: 0 14px;
   border-bottom: 1px solid var(--glass-border);
+  flex-shrink: 0;
 }
 
 .toolbar-title {
-  font-size: 0.8125rem;
+  font-size: 1rem;
+  line-height: 1;
   font-weight: 600;
   color: var(--text-primary);
   margin: 0;
 }
 
-/* ===================================
-   Icon Grid (2 cols)
-   =================================== */
 .nodes-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-sm);
+  grid-template-columns: repeat(2, 24px);
+  grid-auto-rows: 24px;
+  gap: 104px;
   flex: 1;
   align-content: start;
+  justify-content: start;
+  overflow: visible;
+  padding: 84px 0 0 54px;
 }
 
 .draggable-node {
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
   cursor: grab;
-  transition: all var(--transition-base);
-  min-height: 48px;
+  transition: color var(--transition-fast), background var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .draggable-node:hover {
-  background: var(--bg-elevated);
-  border-color: var(--glass-border-hover);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .draggable-node:active {
   cursor: grabbing;
-  transform: scale(0.93);
+  transform: scale(0.92);
 }
 
 .draggable-node-icon {
-  font-size: 1.25rem;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform var(--transition-base);
+  color: rgba(245, 245, 245, 0.86);
+}
+
+.draggable-node-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
 }
 
 .draggable-node:hover .draggable-node-icon {
-  transform: scale(1.1);
+  color: var(--text-primary);
+  transform: scale(1.08);
+}
+
+.draggable-node {
+  position: relative;
+}
+
+.draggable-node::after {
+  content: attr(data-description);
+  position: absolute;
+  bottom: auto;
+  top: 50%;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.65rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+  border: 1px solid var(--glass-border);
+  z-index: 100;
+}
+
+.draggable-node:hover::after {
+  opacity: 1;
 }
 
 /* ===================================
@@ -73,20 +117,34 @@
    =================================== */
 @media (max-width: 768px) {
   .pipeline-toolbar {
-    padding: var(--spacing-sm);
-    gap: var(--spacing-sm);
+    padding: 0;
+  }
+
+  .toolbar-header {
+    height: 48px;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .toolbar-title {
+    font-size: 1rem;
   }
 
   .nodes-grid {
     grid-template-columns: repeat(5, 1fr);
-    gap: var(--spacing-xs);
+    grid-auto-rows: 32px;
+    gap: var(--spacing-sm);
+    justify-content: stretch;
+    padding: var(--spacing-md) var(--spacing-lg);
   }
 
   .draggable-node {
-    min-height: 40px;
+    width: 32px;
+    height: 32px;
+    justify-self: center;
   }
 
   .draggable-node-icon {
-    font-size: 1rem;
+    width: 22px;
+    height: 22px;
   }
 }

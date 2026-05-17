@@ -5,20 +5,23 @@ export const LLMNode = createNode({
   title: 'LLM',
   icon: '🤖',
   handles: [
-    { ...HandleConfig.targetLeft('system', '33%'), label: 'system' },
-    { ...HandleConfig.targetLeft('prompt', '67%'), label: 'prompt' },
+    HandleConfig.targetLeft('input'),
     HandleConfig.sourceRight('response'),
   ],
   renderContent: () => (
     <div
       style={{
+        minHeight: '54px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         fontSize: '0.75rem',
-        color: 'var(--text-tertiary)',
-        padding: 'var(--spacing-md)',
+        color: 'var(--text-secondary)',
+        padding: '0 12px',
         background: 'var(--bg-surface)',
-        borderRadius: 'var(--radius-md)',
+        borderRadius: '6px',
         textAlign: 'center',
-        border: '1px solid var(--glass-border)',
+        border: '1px solid #484848',
       }}
     >
       AI Language Model
