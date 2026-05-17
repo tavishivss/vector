@@ -110,18 +110,29 @@
   text-align: center;
   pointer-events: none;
   z-index: 0;
-  animation: fadeIn 0.5s ease-out;
+  animation: emptyStateFadeIn 0.5s ease-out;
+}
+
+@keyframes emptyStateFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 8px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* ===================================
    Connection Lines
    =================================== */
 .react-flow__connection {
-  stroke: #3a3a3a !important;
+  stroke: #ffffff !important;
 }
 
 .react-flow__connection-path {
-  stroke: #3a3a3a !important;
+  stroke: #ffffff !important;
 }
 
 .empty-state-glow {

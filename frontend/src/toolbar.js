@@ -97,15 +97,15 @@ export const PipelineToolbar = () => {
       </div>
 
       <div className="nodes-grid">
-        <DraggableNode type='customInput' icon={<IconInput />} description='Start your pipeline' />
-        <DraggableNode type='customOutput' icon={<IconOutput />} description='End your pipeline' />
-        <DraggableNode type='llm' icon={<IconLLM />} description='AI Language Model' />
-        <DraggableNode type='text' icon={<IconText />} description='Add static text' />
-        <DraggableNode type='filter' icon={<IconFilter />} description='Filter data' />
-        <DraggableNode type='transform' icon={<IconTransform />} description='Transform data' />
-        <DraggableNode type='conditional' icon={<IconConditional />} description='Branch logic' />
-        <DraggableNode type='aggregator' icon={<IconAggregator />} description='Combine inputs' />
-        <DraggableNode type='delay' icon={<IconDelay />} description='Add delay' />
+        <DraggableNode type='customInput' icon={<IconInput />} description='Input' />
+        <DraggableNode type='customOutput' icon={<IconOutput />} description='Output' />
+        <DraggableNode type='llm' icon={<IconLLM />} description='LLM' />
+        <DraggableNode type='text' icon={<IconText />} description='Text' />
+        <DraggableNode type='filter' icon={<IconFilter />} description='Filter' />
+        <DraggableNode type='transform' icon={<IconTransform />} description='Transform' />
+        <DraggableNode type='conditional' icon={<IconConditional />} description='Branch' />
+        <DraggableNode type='aggregator' icon={<IconAggregator />} description='Merge' />
+        <DraggableNode type='delay' icon={<IconDelay />} description='Delay' />
       </div>
     </div>
   );

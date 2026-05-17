@@ -117,8 +117,14 @@ code {
 }
 
 ::selection {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: var(--text-primary);
+  background-color: rgba(37, 99, 235, 0.72);
+  color: #ffffff;
+}
+
+input::selection,
+textarea::selection {
+  background-color: rgba(37, 99, 235, 0.82);
+  color: #ffffff;
 }
 
 /* ===================================
@@ -156,21 +162,22 @@ code {
 }
 
 .react-flow__edge-path {
-  stroke: rgba(255, 255, 255, 0.12) !important;
+  stroke: #ffffff !important;
   stroke-width: 1.5;
 }
 
-.react-flow__edge.animated .react-flow__edge-path {
-  stroke: rgba(255, 255, 255, 0.12) !important;
+.react-flow__edge.animated .react-flow__edge-path,
+.react-flow__edge.animated path {
+  stroke: #ffffff !important;
 }
 
 .react-flow__edge.selected .react-flow__edge-path {
-  stroke: var(--text-secondary) !important;
+  stroke: #ffffff !important;
   stroke-width: 2;
 }
 
 .react-flow__connection-line {
-  stroke: rgba(255, 255, 255, 0.16) !important;
+  stroke: #ffffff !important;
   stroke-width: 1.5;
 }
 
