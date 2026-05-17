@@ -1,7 +1,7 @@
 // BaseNode.js
 // Abstraction for creating nodes with minimal boilerplate
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Handle, Position, useReactFlow } from 'reactflow';
 import './nodes.css';
 
@@ -149,12 +149,6 @@ export const createNode = (config) => {
           outline: 'none'
         };
         
-        const inputFocusStyle = {
-          borderColor: 'var(--accent-primary)',
-          backgroundColor: 'var(--bg-secondary)',
-          boxShadow: 'var(--shadow-purple)'
-        };
-
         // Render different field types
         switch (type) {
           case 'select':
