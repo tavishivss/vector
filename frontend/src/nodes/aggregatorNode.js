@@ -1,15 +1,14 @@
-// aggregatorNode.js
-// Demonstrates: Multiple inputs with single output
-
 import { createNode, HandleConfig } from './BaseNode';
 
 export const AggregatorNode = createNode({
+  nodeType: 'aggregator',
   title: 'Aggregator',
+  icon: '📊',
   handles: [
     HandleConfig.targetLeft('input1', '25%'),
     HandleConfig.targetLeft('input2', '50%'),
     HandleConfig.targetLeft('input3', '75%'),
-    HandleConfig.sourceRight('output')
+    HandleConfig.sourceRight('output'),
   ],
   fields: [
     {
@@ -20,22 +19,16 @@ export const AggregatorNode = createNode({
         { value: 'concat', label: 'Concatenate' },
         { value: 'merge', label: 'Merge Objects' },
         { value: 'sum', label: 'Sum Numbers' },
-        { value: 'average', label: 'Average' }
+        { value: 'average', label: 'Average' },
       ],
-      defaultValue: 'concat'
+      defaultValue: 'concat',
     },
     {
       name: 'separator',
       label: 'Separator',
       type: 'text',
       placeholder: 'e.g., comma, space...',
-      defaultValue: ', '
-    }
+      defaultValue: ', ',
+    },
   ],
-  style: {
-    background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%)',
-    borderColor: '#22c55e',
-    borderWidth: '2px',
-    minHeight: 120
-  }
 });

@@ -1,14 +1,13 @@
-// conditionalNode.js
-// Demonstrates: Multiple outputs (branching logic)
-
 import { createNode, HandleConfig } from './BaseNode';
 
 export const ConditionalNode = createNode({
+  nodeType: 'conditional',
   title: 'Conditional',
+  icon: '🔀',
   handles: [
     HandleConfig.targetLeft('input', '25%'),
-    HandleConfig.sourceRight('true', '33%'),
-    HandleConfig.sourceRight('false', '67%')
+    { ...HandleConfig.sourceRight('true', '33%'), label: 'true' },
+    { ...HandleConfig.sourceRight('false', '67%'), label: 'false' },
   ],
   fields: [
     {
@@ -20,20 +19,15 @@ export const ConditionalNode = createNode({
         { value: 'isNotEmpty', label: 'Is Not Empty' },
         { value: 'contains', label: 'Contains Text' },
         { value: 'greaterThan', label: 'Greater Than' },
-        { value: 'lessThan', label: 'Less Than' }
+        { value: 'lessThan', label: 'Less Than' },
       ],
-      defaultValue: 'isNotEmpty'
+      defaultValue: 'isNotEmpty',
     },
     {
       name: 'compareValue',
       label: 'Compare Value',
       type: 'text',
-      placeholder: 'Optional comparison value...'
-    }
+      placeholder: 'Optional comparison value...',
+    },
   ],
-  style: {
-    background: 'linear-gradient(135deg, #fef2f2 0%, #ffffff 100%)',
-    borderColor: '#ef4444',
-    borderWidth: '2px'
-  }
 });
