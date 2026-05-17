@@ -1,166 +1,101 @@
-// BaseNode.js
-// Abstraction for creating nodes with minimal boilerplate
-
 import { useState } from 'react';
 import { Handle, Position, useReactFlow } from 'reactflow';
 import './nodes.css';
 
 /**
- * BaseNode Component - A flexible abstraction for all node types
- * 
- * @param {Object} config - Node configuration
- * @param {string} config.title - Node title displayed at the top
- * @param {Array} config.handles - Array of handle configurations
- * @param {Array} config.fields - Array of field configurations (optional)
- * @param {Function} config.renderContent - Custom content renderer (optional)
- * @param {Object} config.style - Custom styles for the node container
- * @param {Object} config.defaultValues - Default values for fields
+ * createNode — Declarative factory for glassmorphic pipeline nodes.
+ *
+ * @param {Object} config
+ * @param {string} config.nodeType  — identifier used for CSS accent theming
+ * @param {string} config.title     — display name shown in the header
+ * @param {string} config.icon      — emoji/icon for the header badge
+ * @param {Array}  config.handles   — HandleConfig entries
+ * @param {Array}  config.fields    — field descriptors (text/number/select/textarea/checkbox)
+ * @param {Function} config.renderContent — optional custom renderer
+ * @param {Object} config.defaultValues
+ * @param {number} config.width     — override default 244px width
  */
 export const createNode = (config) => {
   const {
+    nodeType = 'default',
     title,
+    icon = '',
     handles = [],
     fields = [],
     renderContent,
-    style = {},
     defaultValues = {},
+    width = 244,
   } = config;
 
   return ({ id, data, selected }) => {
     const { deleteElements } = useReactFlow();
-    
-    // Initialize state for all fields
+
     const [fieldValues, setFieldValues] = useState(() => {
-      const initialValues = {};
-      fields.forEach(field => {
+      const initial = {};
+      fields.forEach((field) => {
         const dataKey = field.dataKey || field.name;
-        initialValues[field.name] = data?.[dataKey] || field.defaultValue || defaultValues[field.name] || '';
+        initial[field.name] =
+          data?.[dataKey] || field.defaultValue || defaultValues[field.name] || '';
       });
-      return initialValues;
+      return initial;
     });
 
-    // Generic handler for field changes
     const handleFieldChange = (fieldName, value) => {
-      setFieldValues(prev => ({
-        ...prev,
-        [fieldName]: value
-      }));
+      setFieldValues((prev) => ({ ...prev, [fieldName]: value }));
     };
 
-    // Handle delete button click
     const handleDelete = (e) => {
       e.stopPropagation();
       deleteElements({ nodes: [{ id }] });
     };
 
-    // Default node styles with customization
-    const defaultStyle = {
-      width: 220,
-      minHeight: 100,
-      border: '2px solid var(--border-color)',
-      borderRadius: 'var(--radius-lg)',
-      background: 'var(--bg-secondary)',
-      padding: 'var(--spacing-md)',
-      boxShadow: 'var(--shadow-md)',
-      transition: 'all var(--transition-base)',
-      color: 'var(--text-primary)',
-      ...style
-    };
-
-    // Render handles based on configuration
-    const renderHandles = () => {
-      return handles.map((handle, index) => {
-        const {
-          type,
-          position,
-          id: handleId,
-          style: handleStyle = {},
-          label
-        } = handle;
-
+    const renderHandles = () =>
+      handles.map((handle) => {
+        const { type, position, id: handleId, style: handleStyle = {}, label } = handle;
         const fullHandleId = `${id}-${handleId}`;
-        
+
         return (
           <div key={fullHandleId} style={{ position: 'relative' }}>
             <Handle
               type={type}
               position={position}
               id={fullHandleId}
-              style={{
-                ...handleStyle,
-                width: '12px',
-                height: '12px',
-                border: '2px solid white',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-              }}
+              style={handleStyle}
             />
             {label && (
-              <span style={{
-                position: 'absolute',
-                fontSize: '0.625rem',
-                color: 'var(--text-secondary)',
-                fontWeight: '500',
-                ...(position === Position.Left ? { left: '14px' } : { right: '14px' }),
-                top: '50%',
-                transform: 'translateY(-50%)',
-                pointerEvents: 'none'
-              }}>
+              <span
+                className={`handle-label ${position === Position.Left ? 'handle-label-left' : 'handle-label-right'}`}
+              >
                 {label}
               </span>
             )}
           </div>
         );
       });
-    };
 
-    // Render fields based on configuration
-    const renderFields = () => {
-      return fields.map((field, index) => {
+    const renderFields = () =>
+      fields.map((field) => {
         const {
           name,
           label,
           type = 'text',
           options = [],
           placeholder = '',
-          style: fieldStyle = {}
         } = field;
 
         const fieldValue = fieldValues[name];
 
-        const labelStyle = {
-          display: 'block',
-          marginBottom: 'var(--spacing-sm)',
-          fontSize: '0.75rem',
-          fontWeight: '600',
-          color: 'var(--text-primary)',
-          ...fieldStyle
-        };
-
-        const inputStyle = {
-          width: '100%',
-          padding: 'var(--spacing-sm)',
-          fontSize: '0.75rem',
-          border: '1px solid var(--border-color)',
-          borderRadius: 'var(--radius-md)',
-          marginBottom: 'var(--spacing-sm)',
-          transition: 'all var(--transition-fast)',
-          backgroundColor: 'var(--bg-tertiary)',
-          color: 'var(--text-primary)',
-          outline: 'none'
-        };
-        
-        // Render different field types
         switch (type) {
           case 'select':
             return (
-              <label key={name} style={labelStyle}>
-                {label}:
+              <label key={name} className="node-field-label">
+                {label}
                 <select
+                  className="node-field-input"
                   value={fieldValue}
                   onChange={(e) => handleFieldChange(name, e.target.value)}
-                  style={inputStyle}
                 >
-                  {options.map(opt => (
+                  {options.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
                     </option>
@@ -171,39 +106,42 @@ export const createNode = (config) => {
 
           case 'textarea':
             return (
-              <label key={name} style={labelStyle}>
-                {label}:
+              <label key={name} className="node-field-label">
+                {label}
                 <textarea
+                  className="node-field-input"
                   value={fieldValue}
                   onChange={(e) => handleFieldChange(name, e.target.value)}
                   placeholder={placeholder}
-                  style={{ ...inputStyle, minHeight: '60px', resize: 'vertical' }}
                 />
               </label>
             );
 
           case 'number':
             return (
-              <label key={name} style={labelStyle}>
-                {label}:
+              <label key={name} className="node-field-label">
+                {label}
                 <input
                   type="number"
+                  className="node-field-input"
                   value={fieldValue}
                   onChange={(e) => handleFieldChange(name, e.target.value)}
                   placeholder={placeholder}
-                  style={inputStyle}
                 />
               </label>
             );
 
           case 'checkbox':
             return (
-              <label key={name} style={{ ...labelStyle, display: 'flex', alignItems: 'center' }}>
+              <label
+                key={name}
+                className="node-field-label"
+                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+              >
                 <input
                   type="checkbox"
                   checked={fieldValue}
                   onChange={(e) => handleFieldChange(name, e.target.checked)}
-                  style={{ marginRight: '5px' }}
                 />
                 {label}
               </label>
@@ -212,75 +150,45 @@ export const createNode = (config) => {
           case 'text':
           default:
             return (
-              <label key={name} style={labelStyle}>
-                {label}:
+              <label key={name} className="node-field-label">
+                {label}
                 <input
                   type="text"
+                  className="node-field-input"
                   value={fieldValue}
                   onChange={(e) => handleFieldChange(name, e.target.value)}
                   placeholder={placeholder}
-                  style={inputStyle}
                 />
               </label>
             );
         }
       });
-    };
 
     return (
-      <div style={defaultStyle} className="custom-node">
+      <div
+        className={`custom-node${selected ? ' selected' : ''}`}
+        data-node-type={nodeType}
+        style={{ width }}
+      >
         {renderHandles()}
-        
-        {/* Delete button - only visible when node is selected */}
-        {selected && (
-          <button
-            onClick={handleDelete}
-            className="node-delete-button"
-            title="Delete node"
-            style={{
-              position: 'absolute',
-              top: '-12px',
-              right: '-12px',
-              width: '24px',
-              height: '24px',
-              background: 'var(--error)',
-              color: 'white',
-              border: 'none',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '18px',
-              fontWeight: 'bold',
-              boxShadow: 'var(--shadow-md)',
-              transition: 'all var(--transition-fast)',
-              zIndex: 1000,
-              lineHeight: 1,
-              padding: 0
-            }}
-          >
-            ×
-          </button>
-        )}
-        
-        <div style={{ 
-          marginBottom: 'var(--spacing-md)', 
-          paddingBottom: 'var(--spacing-sm)',
-          borderBottom: '2px solid var(--border-color)'
-        }}>
-          <span style={{ 
-            fontWeight: '700', 
-            fontSize: '0.875rem',
-            color: 'var(--text-primary)',
-            letterSpacing: '0.025em'
-          }}>
-            {title}
-          </span>
+
+        <button
+          onClick={handleDelete}
+          className="node-delete-button"
+          title="Delete node"
+        >
+          ×
+        </button>
+
+        <div className="node-header">
+          {icon && <span className="node-icon">{icon}</span>}
+          <span className="node-title">{title}</span>
         </div>
-        
+
         <div>
-          {renderContent ? renderContent({ id, data, fieldValues, handleFieldChange }) : renderFields()}
+          {renderContent
+            ? renderContent({ id, data, fieldValues, handleFieldChange })
+            : renderFields()}
         </div>
       </div>
     );
@@ -288,38 +196,34 @@ export const createNode = (config) => {
 };
 
 /**
- * Helper function to create common handle configurations
+ * HandleConfig — shorthand helpers for common handle placements.
  */
 export const HandleConfig = {
-  // Source handle on the right
-  sourceRight: (id, top = '50%') => ({
+  sourceRight: (id, top = '18px') => ({
     type: 'source',
     position: Position.Right,
     id,
-    style: { top }
+    style: { top },
   }),
 
-  // Target handle on the left
-  targetLeft: (id, top = '50%') => ({
+  targetLeft: (id, top = '18px') => ({
     type: 'target',
     position: Position.Left,
     id,
-    style: { top }
+    style: { top },
   }),
 
-  // Source handle on the bottom
   sourceBottom: (id, left = '50%') => ({
     type: 'source',
     position: Position.Bottom,
     id,
-    style: { left }
+    style: { left },
   }),
 
-  // Target handle on the top
   targetTop: (id, left = '50%') => ({
     type: 'target',
     position: Position.Top,
     id,
-    style: { left }
+    style: { left },
   }),
 };

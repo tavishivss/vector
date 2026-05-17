@@ -1,29 +1,30 @@
-// llmNode.js
-
 import { createNode, HandleConfig } from './BaseNode';
 
 export const LLMNode = createNode({
-  title: '🤖 LLM',
+  nodeType: 'llm',
+  title: 'LLM',
+  icon: '🤖',
   handles: [
-    HandleConfig.targetLeft('system', '33%'),
-    HandleConfig.targetLeft('prompt', '67%'),
-    HandleConfig.sourceRight('response')
+    HandleConfig.targetLeft('input'),
+    HandleConfig.sourceRight('response'),
   ],
   renderContent: () => (
-    <div style={{ 
-      fontSize: '0.75rem', 
-      color: 'var(--gray-600)',
-      padding: 'var(--spacing-sm)',
-      background: 'var(--purple-50)',
-      borderRadius: 'var(--radius-md)',
-      textAlign: 'center'
-    }}>
-      <span>AI Language Model</span>
+    <div
+      style={{
+        minHeight: '54px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '0.75rem',
+        color: 'var(--text-secondary)',
+        padding: '0 12px',
+        background: 'var(--bg-surface)',
+        borderRadius: '6px',
+        textAlign: 'center',
+        border: '1px solid #484848',
+      }}
+    >
+      AI Language Model
     </div>
   ),
-  style: {
-    background: 'linear-gradient(135deg, #faf5ff 0%, #ffffff 100%)',
-    borderColor: '#8b5cf6',
-    borderWidth: '2px'
-  }
 });

@@ -1,19 +1,17 @@
-// inputNode.js
-
 import { createNode, HandleConfig } from './BaseNode';
 
 export const InputNode = createNode({
-  title: '📥 Input',
-  handles: [
-    HandleConfig.sourceRight('value')
-  ],
+  nodeType: 'input',
+  title: 'Input',
+  icon: '📥',
+  handles: [HandleConfig.sourceRight('value')],
   fields: [
     {
       name: 'inputName',
       label: 'Name',
       type: 'text',
       defaultValue: 'input_',
-      placeholder: 'Enter input name...'
+      placeholder: 'Enter input name...',
     },
     {
       name: 'inputType',
@@ -21,14 +19,9 @@ export const InputNode = createNode({
       type: 'select',
       options: [
         { value: 'Text', label: 'Text' },
-        { value: 'File', label: 'File' }
+        { value: 'File', label: 'File' },
       ],
-      defaultValue: 'Text'
-    }
+      defaultValue: 'Text',
+    },
   ],
-  style: {
-    background: 'linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%)',
-    borderColor: '#10b981',
-    borderWidth: '2px'
-  }
 });
